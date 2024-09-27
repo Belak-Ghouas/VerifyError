@@ -2,7 +2,7 @@ Using Contentsquare sdk which is built on Gradle 8.7 with AGP 8.5
 When I enable enableAndroidTestCoverage = true , i have a crash due to some bytecode instrumentation, 
 If i build an SDK with gradle prior to 8.2 no issue with this version
 I suspect D8 dexer or R8 shrinker that is doing some strange things on the bytecode & after i enabledAndroidTestCoverage , some jacoco byteCode is instrumented in this class and cause the crash.
-
+```
 java.lang.VerifyError: Verifier rejected class com.contentsquare.android.sdk.f6: void com.contentsquare.android.sdk.f6.a(android.view.Window) failed to verify: void com.contentsquare.android.sdk.f6.a(android.view.Window): [0xAB] expected to be within a catch-all for an instruction where a monitor is held (declaration of 'com.contentsquare.android.sdk.f6' appears in /data/app/~~NpYj7LbTUz36SQln1eO7sg==/com.contentsquare.android.demo-0RtFsdxC3XloHroYjXuVpg==/base.apk!classes5.dex)
                                                                                                     	at com.contentsquare.android.sdk.d6$a.a(SourceFile:159)
                                                                                                     	at com.contentsquare.android.sdk.d6$a.a(SourceFile:62)
@@ -20,3 +20,5 @@ java.lang.VerifyError: Verifier rejected class com.contentsquare.android.sdk.f6:
                                                                                                     	at java.lang.reflect.Method.invoke(Native Method)
                                                                                                     	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
                                                                                                     	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1003)
+
+```
