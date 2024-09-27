@@ -1,5 +1,17 @@
 Using Contentsquare sdk which is built on Gradle 8.7 with AGP 8.5
-When I enable enableAndroidTestCoverage = true , i have a crash due to some bytecode instrumentation, 
+When I enable enableAndroidTestCoverage in app/builde.gradle.kts
+```
+android {
+ buildTypes {
+        debug {
+            isDebuggable = true
+            // disabling this fix the crash issue
+            enableAndroidTestCoverage = true
+        }
+  }
+}
+```
+ , i have a crash due to some bytecode instrumentation, 
 If i build an SDK with gradle prior to 8.2 no issue with this version
 I suspect D8 dexer or R8 shrinker that is doing some strange things on the bytecode & after i enabledAndroidTestCoverage , some jacoco byteCode is instrumented in this class and cause the crash.
 ```
